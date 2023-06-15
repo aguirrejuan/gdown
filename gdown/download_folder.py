@@ -203,6 +203,7 @@ def download_folder(
     use_cookies=True,
     remaining_ok=False,
     verify=True,
+    skip_if_exist=False,
 ):
     """Downloads entire folder from URL.
 
@@ -280,6 +281,9 @@ def download_folder(
         if file_id is None:  # folder
             if not osp.exists(file_path):
                 os.makedirs(file_path)
+            continue
+        
+        if skip_if_exist and osp.exists(file_path):
             continue
 
         filename = download(
