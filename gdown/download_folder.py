@@ -285,8 +285,9 @@ def download_folder(
         
         if skip_if_exist and osp.exists(file_path):
             continue
-
-        filename = download(
+        
+        try:
+            filename = download(
             url="https://drive.google.com/uc?id=" + file_id,
             output=file_path,
             quiet=quiet,
@@ -294,7 +295,9 @@ def download_folder(
             speed=speed,
             use_cookies=use_cookies,
             verify=verify,
-        )
+            )
+        except:
+            print('error downloading')
 
         if filename is None:
             if not quiet:

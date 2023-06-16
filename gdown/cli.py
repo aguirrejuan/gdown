@@ -116,6 +116,13 @@ def main():
         help="(folder only) asserts that is ok to download max "
         "{max} files per folder.".format(max=MAX_NUMBER_FILES),
     )
+
+    parser.add_argument(
+        "--skip-if-exist",
+        action="store_true",
+        help="Skip files if there exists",
+    )
+
     parser.add_argument(
         "--format",
         help="Format of Google Docs, Spreadsheets and Slides. "
