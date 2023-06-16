@@ -298,6 +298,7 @@ def download_folder(
             )
         except:
             print('error downloading')
+            continue
 
         if filename is None:
             if not quiet:
