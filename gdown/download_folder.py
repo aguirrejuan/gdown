@@ -9,6 +9,7 @@ import os.path as osp
 import re
 import sys
 import warnings
+from tqdm import tqdm
 
 import bs4
 
@@ -277,7 +278,7 @@ def download_folder(
     if not quiet:
         print("Building directory structure completed")
     filenames = []
-    for file_id, file_path in directory_structure:
+    for file_id, file_path in tqdm(directory_structure):
         if file_id is None:  # folder
             if not osp.exists(file_path):
                 os.makedirs(file_path)
